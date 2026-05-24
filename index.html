@@ -8,8 +8,9 @@
   <meta property="og:title" content="Inspired By Ian — Fine Jewelry Boutique" />
   <meta property="og:description" content="Shop curated new and pre-owned jewelry or consign your fine pieces through Inspired By Ian." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c1d11376-d0b7-479c-ab9e-49ae0331139a.png" />
+  <meta property="og:image" content="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/fecdbd73-3ee4-4f2a-b5bd-b07ce2964755.png" />
   <meta name="theme-color" content="#8b6a3d" />
+  <link rel="icon" type="image/png" href="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/fecdbd73-3ee4-4f2a-b5bd-b07ce2964755.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +34,7 @@
     body{min-height:100vh;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);font-size:var(--text-base);line-height:1.65}
     img,svg{display:block;max-width:100%;height:auto}
     a{text-decoration:none;color:inherit}
-    button,input,textarea,select{font:inherit;color:inherit}
+    button,input,textarea,select,summary{font:inherit;color:inherit}
     button{cursor:pointer;border:none;background:none}
     .skip-link{position:absolute;left:var(--space-4);top:-100px;background:var(--color-primary);color:var(--color-text-inverse);padding:var(--space-3) var(--space-4);border-radius:var(--radius-full);z-index:999}
     .skip-link:focus{top:var(--space-4)}
@@ -46,12 +47,20 @@
     .lede{color:var(--color-text-muted);max-width:62ch}
     .site-header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--color-bg) 88%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--color-divider)}
     .header-inner{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);min-height:76px}
-    .brand{display:inline-flex;align-items:center;gap:var(--space-3)}
-    .brand-mark{width:36px;height:36px;color:var(--color-primary)}
-    .brand-name{font-family:var(--font-display);font-size:1.5rem;font-weight:600}
+    .brand{display:inline-flex;align-items:center;line-height:1;position:relative}
+    .brand-logo{width:auto;height:56px;max-width:220px;object-fit:contain;display:none}
+    html[data-theme="light"] .brand-logo-light{display:block}
+    html[data-theme="dark"] .brand-logo-dark{display:block}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
     .nav{display:flex;gap:var(--space-5);align-items:center;flex-wrap:wrap}
-    .nav a{font-size:var(--text-sm);color:var(--color-text-muted)}
-    .nav a:hover{color:var(--color-text)}
+    .nav a,.nav summary{font-size:var(--text-sm);color:var(--color-text-muted)}
+    .nav a:hover,.nav summary:hover{color:var(--color-text)}
+    .nav-dropdown{position:relative}
+    .nav-dropdown summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:.35rem}
+    .nav-dropdown summary::-webkit-details-marker{display:none}
+    .nav-dropdown-menu{position:absolute;top:calc(100% + .75rem);left:0;min-width:280px;display:grid;gap:.25rem;padding:.75rem;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);z-index:60}
+    .nav-dropdown-menu a{padding:.55rem .7rem;border-radius:var(--radius-md);font-size:var(--text-sm);color:var(--color-text-muted)}
+    .nav-dropdown-menu a:hover{background:var(--color-surface-2);color:var(--color-text)}
     .header-actions{display:flex;align-items:center;gap:var(--space-3)}
     .theme-toggle,.cart-button{min-width:44px;height:44px;border-radius:999px;border:1px solid var(--color-border);display:inline-flex;align-items:center;justify-content:center;background:var(--color-surface)}
     .cart-button{padding:0 1rem;gap:.55rem}
@@ -67,9 +76,9 @@
     .hero h1{font-family:var(--font-display);font-size:clamp(3rem,5vw,5.8rem);line-height:.95;font-weight:600;max-width:10ch}
     .hero p{color:var(--color-text-muted);max-width:58ch;margin-top:var(--space-5)}
     .hero-actions{display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-6)}
-    .hero-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4);margin-top:var(--space-8)}
-    .stat{padding-top:var(--space-4);border-top:1px solid var(--color-divider)}
-    .stat strong{display:block;font-size:var(--text-lg);font-family:var(--font-display)}
+    .hero-meta,.trust-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4);margin-top:var(--space-8)}
+    .stat,.trust-card{padding-top:var(--space-4);border-top:1px solid var(--color-divider)}
+    .stat strong,.trust-card strong{display:block;font-size:var(--text-lg);font-family:var(--font-display)}
     .hero-card{background:var(--color-surface);border-radius:var(--radius-xl);padding:var(--space-4);box-shadow:var(--shadow-md);border:1px solid var(--color-border)}
     .hero-card img{border-radius:calc(var(--radius-xl) - var(--space-4));width:100%;aspect-ratio:4/5;object-fit:cover}
     .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-5)}
@@ -88,18 +97,20 @@
     .step{padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider)}
     .step:last-child{border-bottom:0;padding-bottom:0}
     .step span{display:inline-block;font-size:var(--text-xs);color:var(--color-primary);letter-spacing:.14em;text-transform:uppercase;margin-bottom:var(--space-2)}
-    .detail-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:var(--space-8);align-items:start}
+    .detail-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--space-8);align-items:start}
     .gallery{display:grid;gap:var(--space-4)}
     .gallery-main{border-radius:var(--radius-xl);overflow:hidden;border:1px solid var(--color-border)}
     .gallery-main img{width:100%;aspect-ratio:1/1.08;object-fit:cover}
+    .thumbs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-3)}
+    .thumbs img{border-radius:var(--radius-lg);aspect-ratio:1/1;object-fit:cover;border:1px solid var(--color-border)}
     .detail-panel{position:sticky;top:104px}
     .specs{display:grid;gap:var(--space-3);margin:var(--space-5) 0}
     .spec-row{display:flex;justify-content:space-between;gap:var(--space-4);padding-bottom:var(--space-3);border-bottom:1px solid var(--color-divider)}
     .policy-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-5)}
     .faq{display:grid;gap:var(--space-4)}
-    details{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4) var(--space-5)}
-    summary{cursor:pointer;font-weight:700}
-    details p{margin-top:var(--space-3);color:var(--color-text-muted)}
+    details.faq-item{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4) var(--space-5)}
+    details.faq-item summary{cursor:pointer;font-weight:700}
+    details.faq-item p{margin-top:var(--space-3);color:var(--color-text-muted)}
     form{display:grid;gap:var(--space-4);margin-top:var(--space-5)}
     .field-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-4)}
     label{display:grid;gap:var(--space-2);font-size:var(--text-sm)}
@@ -133,19 +144,19 @@
     .cart-note{color:var(--color-text-muted);font-size:var(--text-xs);margin:var(--space-4) 0}
 
     @media (max-width:980px){
-      .hero-grid,.split-panel,.detail-layout,.footer-grid,.grid-3,.grid-2,.policy-grid{grid-template-columns:1fr}
-      .hero-meta{grid-template-columns:1fr}
+      .hero-grid,.split-panel,.detail-layout,.footer-grid,.grid-3,.grid-2,.policy-grid,.hero-meta,.trust-strip{grid-template-columns:1fr}
       .detail-panel{position:static}
       .nav{display:none}
     }
 
     @media (max-width:640px){
-      .field-row{grid-template-columns:1fr}
+      .field-row,.thumbs{grid-template-columns:1fr}
       .header-inner{min-height:68px}
       .hero h1{max-width:12ch}
       .hero-actions{flex-direction:column;align-items:stretch}
       .btn{width:100%}
       .cart-button .total{display:none}
+      .brand-logo{height:44px;max-width:180px}
     }
 
     @media (prefers-reduced-motion:reduce){
@@ -159,18 +170,26 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#top" aria-label="Inspired By Ian home">
-        <svg class="brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-          <circle cx="32" cy="32" r="25" stroke="currentColor" stroke-width="2.5"></circle>
-          <path d="M22 20h20M32 20v24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"></path>
-          <path d="M24 42c3-3 5-4 8-4s5 1 8 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"></path>
-        </svg>
-        <span class="brand-name">Inspired By Ian</span>
+        <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/fecdbd73-3ee4-4f2a-b5bd-b07ce2964755.png" alt="Inspired By Ian logo for light mode." class="brand-logo brand-logo-light" width="220" height="220" loading="eager" decoding="async">
+        <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/862f7a1a-a98d-4304-b846-ff7a55c5b6d1.png" alt="Inspired By Ian logo for dark mode." class="brand-logo brand-logo-dark" width="220" height="220" loading="eager" decoding="async">
+        <span class="sr-only">Inspired By Ian</span>
       </a>
 
       <nav class="nav" aria-label="Primary">
-        <a href="#new">Shop New</a>
-        <a href="#preowned">Shop Pre-Owned</a>
-        <a href="#product">Featured Piece</a>
+        <a href="#top">Home</a>
+        <details class="nav-dropdown">
+          <summary>Shop</summary>
+          <div class="nav-dropdown-menu">
+            <a href="#new">New Arrivals</a>
+            <a href="#preowned">Pre-Owned</a>
+            <a href="#product-lumiere">Lumière Chain Necklace</a>
+            <a href="#product-solstice">Solstice Hoop Set</a>
+            <a href="#product-aurelia">Aurelia Ring Stack</a>
+            <a href="#product-estate-link">Estate Link Bracelet</a>
+            <a href="#product-heirloom">Heirloom Signet Ring</a>
+            <a href="#product-celeste">Celeste Pendant Necklace</a>
+          </div>
+        </details>
         <a href="#consign">Sell With Us</a>
         <a href="#policies">Policies</a>
         <a href="#contact">Contact</a>
@@ -229,6 +248,21 @@
           <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c1d11376-d0b7-479c-ab9e-49ae0331139a.png" alt="Featured 14K solid gold pendant necklace in boutique studio lighting" width="1024" height="1024" loading="eager" decoding="async">
         </div>
       </div>
+
+      <div class="trust-strip">
+        <div class="trust-card">
+          <strong>Ships from Canada</strong>
+          <span class="mini-note">Orders ship from Vancouver Island, Canada with careful packaging and direct support.</span>
+        </div>
+        <div class="trust-card">
+          <strong>Demo cart active</strong>
+          <span class="mini-note">The cart on this site is a temporary demo and does not place real orders or process payment.</span>
+        </div>
+        <div class="trust-card">
+          <strong>Clear product details</strong>
+          <span class="mini-note">Each item below has its own detail section with materials, condition, and shipping notes.</span>
+        </div>
+      </div>
     </section>
 
     <section class="section" id="new">
@@ -245,14 +279,10 @@
               <h3>Lumière Chain Necklace</h3>
               <p class="muted">A delicate 10K solid gold chain designed for everyday wear, easy layering, and understated shine.</p>
               <p class="price">$549 CAD</p>
-              <button class="btn btn-primary" type="button"
-                data-add-to-cart
-                data-id="lumiere-chain-necklace"
-                data-name="Lumière Chain Necklace"
-                data-price="549.00"
-                data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6bb89cdb-d72e-463f-852b-419dfc0dd3d7.png">
-                Add to cart
-              </button>
+              <div class="hero-actions" style="margin-top:1rem;">
+                <button class="btn btn-primary" type="button" data-add-to-cart data-id="lumiere-chain-necklace" data-name="Lumière Chain Necklace" data-price="549.00" data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6bb89cdb-d72e-463f-852b-419dfc0dd3d7.png">Add to cart</button>
+                <a class="btn btn-secondary" href="#product-lumiere">View details</a>
+              </div>
             </div>
           </article>
 
@@ -263,14 +293,10 @@
               <h3>Solstice Hoop Set</h3>
               <p class="muted">Lightweight 10K solid gold hoops with a polished finish that work for daily wear, gifting, or dressing up a simple look.</p>
               <p class="price">$329 CAD</p>
-              <button class="btn btn-primary" type="button"
-                data-add-to-cart
-                data-id="solstice-hoop-set"
-                data-name="Solstice Hoop Set"
-                data-price="329.00"
-                data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/07429cca-09a5-4078-93f6-a6cd8449cf5c.png">
-                Add to cart
-              </button>
+              <div class="hero-actions" style="margin-top:1rem;">
+                <button class="btn btn-primary" type="button" data-add-to-cart data-id="solstice-hoop-set" data-name="Solstice Hoop Set" data-price="329.00" data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/07429cca-09a5-4078-93f6-a6cd8449cf5c.png">Add to cart</button>
+                <a class="btn btn-secondary" href="#product-solstice">View details</a>
+              </div>
             </div>
           </article>
 
@@ -281,14 +307,10 @@
               <h3>Aurelia Ring Stack</h3>
               <p class="muted">A coordinated 14K solid gold ring set designed to be worn together or mixed into your everyday stack.</p>
               <p class="price">$1,295 CAD</p>
-              <button class="btn btn-primary" type="button"
-                data-add-to-cart
-                data-id="aurelia-ring-stack"
-                data-name="Aurelia Ring Stack"
-                data-price="1295.00"
-                data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/82946422-6028-43f5-956b-3e44083e2e5d.png">
-                Add to cart
-              </button>
+              <div class="hero-actions" style="margin-top:1rem;">
+                <button class="btn btn-primary" type="button" data-add-to-cart data-id="aurelia-ring-stack" data-name="Aurelia Ring Stack" data-price="1295.00" data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/82946422-6028-43f5-956b-3e44083e2e5d.png">Add to cart</button>
+                <a class="btn btn-secondary" href="#product-aurelia">View details</a>
+              </div>
             </div>
           </article>
         </div>
@@ -317,14 +339,10 @@
               <h3>Estate Link Bracelet</h3>
               <p class="muted">A pre-owned 10K solid gold bracelet with classic interlocking links and an easy everyday feel.</p>
               <p class="price">$895 CAD</p>
-              <button class="btn btn-primary" type="button"
-                data-add-to-cart
-                data-id="estate-link-bracelet"
-                data-name="Estate Link Bracelet"
-                data-price="895.00"
-                data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/443e24fe-8db5-43e5-82bc-8d8f87bd46a1.png">
-                Add to cart
-              </button>
+              <div class="hero-actions" style="margin-top:1rem;">
+                <button class="btn btn-primary" type="button" data-add-to-cart data-id="estate-link-bracelet" data-name="Estate Link Bracelet" data-price="895.00" data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/443e24fe-8db5-43e5-82bc-8d8f87bd46a1.png">Add to cart</button>
+                <a class="btn btn-secondary" href="#product-estate-link">View details</a>
+              </div>
             </div>
           </article>
 
@@ -335,21 +353,17 @@
               <h3>Heirloom Signet Ring</h3>
               <p class="muted">A one-of-a-kind 10K solid gold signet ring with strong vintage character and collectible appeal.</p>
               <p class="price">$1,550 CAD</p>
-              <button class="btn btn-primary" type="button"
-                data-add-to-cart
-                data-id="heirloom-signet-ring"
-                data-name="Heirloom Signet Ring"
-                data-price="1550.00"
-                data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/52675aab-92ee-4fdb-a735-b88a751b06bf.png">
-                Add to cart
-              </button>
+              <div class="hero-actions" style="margin-top:1rem;">
+                <button class="btn btn-primary" type="button" data-add-to-cart data-id="heirloom-signet-ring" data-name="Heirloom Signet Ring" data-price="1550.00" data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/52675aab-92ee-4fdb-a735-b88a751b06bf.png">Add to cart</button>
+                <a class="btn btn-secondary" href="#product-heirloom">View details</a>
+              </div>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="product">
+    <section class="section" id="product-celeste">
       <div class="container">
         <p class="eyebrow">Featured necklace</p>
         <h2 class="section-title">Celeste Pendant Necklace</h2>
@@ -358,6 +372,10 @@
           <div class="gallery">
             <div class="gallery-main">
               <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c1d11376-d0b7-479c-ab9e-49ae0331139a.png" alt="Close-up product photo of the Celeste Pendant Necklace" width="1024" height="1024" loading="lazy" decoding="async">
+            </div>
+            <div class="thumbs">
+              <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c1d11376-d0b7-479c-ab9e-49ae0331139a.png" alt="Celeste Pendant Necklace detail view" width="1024" height="1024" loading="lazy" decoding="async">
+              <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6bb89cdb-d72e-463f-852b-419dfc0dd3d7.png" alt="Celeste Pendant Necklace layered styling reference" width="1024" height="1024" loading="lazy" decoding="async">
             </div>
           </div>
 
@@ -375,18 +393,182 @@
             </div>
 
             <div class="hero-actions" style="margin-top:0;">
-              <button class="btn btn-primary" type="button"
-                data-add-to-cart
-                data-id="celeste-pendant-necklace"
-                data-name="Celeste Pendant Necklace"
-                data-price="799.00"
-                data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c1d11376-d0b7-479c-ab9e-49ae0331139a.png">
-                Add to cart
-              </button>
+              <button class="btn btn-primary" type="button" data-add-to-cart data-id="celeste-pendant-necklace" data-name="Celeste Pendant Necklace" data-price="799.00" data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c1d11376-d0b7-479c-ab9e-49ae0331139a.png">Add to cart</button>
               <button class="btn btn-secondary" type="button" data-open-cart>View cart</button>
             </div>
           </aside>
         </div>
+      </div>
+    </section>
+
+    <section class="section" id="product-lumiere">
+      <div class="container detail-layout">
+        <div class="gallery">
+          <div class="gallery-main">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6bb89cdb-d72e-463f-852b-419dfc0dd3d7.png" alt="Lumière Chain Necklace close-up product image" width="1024" height="1024" loading="lazy" decoding="async">
+          </div>
+          <div class="thumbs">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6bb89cdb-d72e-463f-852b-419dfc0dd3d7.png" alt="Lumière Chain Necklace main view" width="1024" height="1024" loading="lazy" decoding="async">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c1d11376-d0b7-479c-ab9e-49ae0331139a.png" alt="Lumière Chain Necklace styling reference" width="1024" height="1024" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <aside class="detail-panel panel">
+          <div class="badge-row"><span class="badge">10K Solid Gold</span><span class="badge">Best seller</span></div>
+          <h2 class="section-title">Lumière Chain Necklace</h2>
+          <p class="price">
+    <section class="section" id="product-lumiere">
+      <div class="container detail-layout">
+        <div class="gallery">
+          <div class="gallery-main">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6bb89cdb-d72e-463f-852b-419dfc0dd3d7.png" alt="Lumière Chain Necklace close-up product image" width="1024" height="1024" loading="lazy" decoding="async">
+          </div>
+          <div class="thumbs">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6bb89cdb-d72e-463f-852b-419dfc0dd3d7.png" alt="Lumière Chain Necklace main view" width="1024" height="1024" loading="lazy" decoding="async">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c1d11376-d0b7-479c-ab9e-49ae0331139a.png" alt="Lumière Chain Necklace styling reference" width="1024" height="1024" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <aside class="detail-panel panel">
+          <div class="badge-row"><span class="badge">10K Solid Gold</span><span class="badge">Best seller</span></div>
+          <h2 class="section-title">Lumière Chain Necklace</h2>
+          <p class="price">$549 CAD</p>
+          <p class="muted">A delicate 10K solid gold chain designed for everyday wear, layering, and understated shine.</p>
+          <div class="specs">
+            <div class="spec-row"><span>Material</span><strong>10K solid gold</strong></div>
+            <div class="spec-row"><span>Style</span><strong>Lightweight chain necklace</strong></div>
+            <div class="spec-row"><span>Wear</span><strong>Everyday / layering</strong></div>
+            <div class="spec-row"><span>Shipping origin</span><strong>Vancouver Island, Canada</strong></div>
+          </div>
+          <div class="hero-actions" style="margin-top:0;">
+            <button class="btn btn-primary" type="button" data-add-to-cart data-id="lumiere-chain-necklace" data-name="Lumière Chain Necklace" data-price="549.00" data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6bb89cdb-d72e-463f-852b-419dfc0dd3d7.png">Add to cart</button>
+            <button class="btn btn-secondary" type="button" data-open-cart>View cart</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="product-solstice">
+      <div class="container detail-layout">
+        <div class="gallery">
+          <div class="gallery-main">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/07429cca-09a5-4078-93f6-a6cd8449cf5c.png" alt="Solstice Hoop Set close-up product image" width="1024" height="1024" loading="lazy" decoding="async">
+          </div>
+          <div class="thumbs">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/07429cca-09a5-4078-93f6-a6cd8449cf5c.png" alt="Solstice Hoop Set main view" width="1024" height="1024" loading="lazy" decoding="async">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/82946422-6028-43f5-956b-3e44083e2e5d.png" alt="Solstice Hoop Set styling reference" width="1024" height="1024" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <aside class="detail-panel panel">
+          <div class="badge-row"><span class="badge">10K Solid Gold</span><span class="badge">Giftable</span></div>
+          <h2 class="section-title">Solstice Hoop Set</h2>
+          <p class="price">$329 CAD</p>
+          <p class="muted">Lightweight 10K solid gold hoops with a polished finish designed for daily wear, gifting, or easy dressing up.</p>
+          <div class="specs">
+            <div class="spec-row"><span>Material</span><strong>10K solid gold</strong></div>
+            <div class="spec-row"><span>Style</span><strong>Polished hoop earrings</strong></div>
+            <div class="spec-row"><span>Occasion</span><strong>Daily wear / gifting</strong></div>
+            <div class="spec-row"><span>Shipping origin</span><strong>Vancouver Island, Canada</strong></div>
+          </div>
+          <div class="hero-actions" style="margin-top:0;">
+            <button class="btn btn-primary" type="button" data-add-to-cart data-id="solstice-hoop-set" data-name="Solstice Hoop Set" data-price="329.00" data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/07429cca-09a5-4078-93f6-a6cd8449cf5c.png">Add to cart</button>
+            <button class="btn btn-secondary" type="button" data-open-cart>View cart</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="product-aurelia">
+      <div class="container detail-layout">
+        <div class="gallery">
+          <div class="gallery-main">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/82946422-6028-43f5-956b-3e44083e2e5d.png" alt="Aurelia Ring Stack close-up product image" width="1024" height="1024" loading="lazy" decoding="async">
+          </div>
+          <div class="thumbs">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/82946422-6028-43f5-956b-3e44083e2e5d.png" alt="Aurelia Ring Stack main view" width="1024" height="1024" loading="lazy" decoding="async">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/07429cca-09a5-4078-93f6-a6cd8449cf5c.png" alt="Aurelia Ring Stack styling reference" width="1024" height="1024" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <aside class="detail-panel panel">
+          <div class="badge-row"><span class="badge">14K Solid Gold</span><span class="badge">Layering edit</span></div>
+          <h2 class="section-title">Aurelia Ring Stack</h2>
+          <p class="price">$1,295 CAD</p>
+          <p class="muted">A coordinated 14K solid gold ring set designed to be worn together or mixed into your daily stack.</p>
+          <div class="specs">
+            <div class="spec-row"><span>Material</span><strong>14K solid gold</strong></div>
+            <div class="spec-row"><span>Style</span><strong>Stacking ring set</strong></div>
+            <div class="spec-row"><span>Wear</span><strong>Layered / statement styling</strong></div>
+            <div class="spec-row"><span>Shipping origin</span><strong>Vancouver Island, Canada</strong></div>
+          </div>
+          <div class="hero-actions" style="margin-top:0;">
+            <button class="btn btn-primary" type="button" data-add-to-cart data-id="aurelia-ring-stack" data-name="Aurelia Ring Stack" data-price="1295.00" data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/82946422-6028-43f5-956b-3e44083e2e5d.png">Add to cart</button>
+            <button class="btn btn-secondary" type="button" data-open-cart>View cart</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="product-estate-link">
+      <div class="container detail-layout">
+        <div class="gallery">
+          <div class="gallery-main">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/443e24fe-8db5-43e5-82bc-8d8f87bd46a1.png" alt="Estate Link Bracelet close-up product image" width="1024" height="1024" loading="lazy" decoding="async">
+          </div>
+          <div class="thumbs">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/443e24fe-8db5-43e5-82bc-8d8f87bd46a1.png" alt="Estate Link Bracelet main view" width="1024" height="1024" loading="lazy" decoding="async">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6bb89cdb-d72e-463f-852b-419dfc0dd3d7.png" alt="Estate Link Bracelet styling reference" width="1024" height="1024" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <aside class="detail-panel panel">
+          <div class="badge-row"><span class="badge">Pre-owned</span><span class="badge">10K Solid Gold</span></div>
+          <h2 class="section-title">Estate Link Bracelet</h2>
+          <p class="price">$895 CAD</p>
+          <p class="muted">A pre-owned 10K solid gold bracelet with classic interlocking links and an easy everyday feel.</p>
+          <div class="specs">
+            <div class="spec-row"><span>Material</span><strong>10K solid gold</strong></div>
+            <div class="spec-row"><span>Condition</span><strong>Pre-owned, store-reviewed</strong></div>
+            <div class="spec-row"><span>Quantity</span><strong>One available</strong></div>
+            <div class="spec-row"><span>Shipping origin</span><strong>Vancouver Island, Canada</strong></div>
+          </div>
+          <div class="hero-actions" style="margin-top:0;">
+            <button class="btn btn-primary" type="button" data-add-to-cart data-id="estate-link-bracelet" data-name="Estate Link Bracelet" data-price="895.00" data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/443e24fe-8db5-43e5-82bc-8d8f87bd46a1.png">Add to cart</button>
+            <button class="btn btn-secondary" type="button" data-open-cart>View cart</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="product-heirloom">
+      <div class="container detail-layout">
+        <div class="gallery">
+          <div class="gallery-main">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/52675aab-92ee-4fdb-a735-b88a751b06bf.png" alt="Heirloom Signet Ring close-up product image" width="1024" height="1024" loading="lazy" decoding="async">
+          </div>
+          <div class="thumbs">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/52675aab-92ee-4fdb-a735-b88a751b06bf.png" alt="Heirloom Signet Ring main view" width="1024" height="1024" loading="lazy" decoding="async">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/82946422-6028-43f5-956b-3e44083e2e5d.png" alt="Heirloom Signet Ring styling reference" width="1024" height="1024" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <aside class="detail-panel panel">
+          <div class="badge-row"><span class="badge">Consignment</span><span class="badge">10K Solid Gold</span></div>
+          <h2 class="section-title">Heirloom Signet Ring</h2>
+          <p class="price">$1,550 CAD</p>
+          <p class="muted">A one-of-a-kind 10K solid gold signet ring with strong vintage character and collectible appeal.</p>
+          <div class="specs">
+            <div class="spec-row"><span>Material</span><strong>10K solid gold</strong></div>
+            <div class="spec-row"><span>Condition</span><strong>Consignment, store-reviewed</strong></div>
+            <div class="spec-row"><span>Quantity</span><strong>One available</strong></div>
+            <div class="spec-row"><span>Shipping origin</span><strong>Vancouver Island, Canada</strong></div>
+          </div>
+          <div class="hero-actions" style="margin-top:0;">
+            <button class="btn btn-primary" type="button" data-add-to-cart data-id="heirloom-signet-ring" data-name="Heirloom Signet Ring" data-price="1550.00" data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/52675aab-92ee-4fdb-a735-b88a751b06bf.png">Add to cart</button>
+            <button class="btn btn-secondary" type="button" data-open-cart>View cart</button>
+          </div>
+        </aside>
       </div>
     </section>
 
@@ -401,7 +583,7 @@
             <div class="step"><span>1. Submission</span><p>Send photos and basic details for rings, necklaces, bracelets, earrings, or other select fine jewelry pieces.</p></div>
             <div class="step"><span>2. Review</span><p>Accepted pieces are reviewed for condition, resale fit, and listing potential before they move forward.</p></div>
             <div class="step"><span>3. Listing</span><p>Approved items are photographed, described, priced, and listed through the store.</p></div>
-            <div class="step"><span>4. Sale + payout</span><p>After the item sells and the applicable return window ends, seller proceeds are paid according to the consignment agreement after sale.</p></div>
+            <div class="step"><span>4. Sale + payout</span><p>After the item sells and the applicable return window ends, seller proceeds are paid according to the consignment agreement.</p></div>
           </div>
         </div>
 
@@ -409,14 +591,14 @@
           <h3 style="font-family:var(--font-display); font-size:var(--text-lg);">Seller intake form</h3>
           <p class="muted">Consignment submissions are reviewed case by case. Accepted pieces are sold on a 70/30 split, with 70% paid to the seller and 30% retained by Inspired By Ian.</p>
 
-          <form>
+          <form action="https://formspree.io/f/YOUR_FORM_ID" method="post">
             <div class="field-row">
-              <label>Full name<input type="text" placeholder="Jane Smith"></label>
-              <label>Email address<input type="email" placeholder="seller@email.com"></label>
+              <label for="seller-name">Full name<input id="seller-name" name="name" type="text" placeholder="Jane Smith" required></label>
+              <label for="seller-email">Email address<input id="seller-email" name="email" type="email" placeholder="seller@email.com" required></label>
             </div>
             <div class="field-row">
-              <label>Jewelry category
-                <select>
+              <label for="jewelry-category">Jewelry category
+                <select id="jewelry-category" name="category" required>
                   <option>Ring</option>
                   <option>Necklace</option>
                   <option>Earrings</option>
@@ -424,10 +606,11 @@
                   <option>Other fine jewelry</option>
                 </select>
               </label>
-              <label>Estimated value<input type="text" placeholder="$800"></label>
+              <label for="estimated-value">Estimated value<input id="estimated-value" name="estimated_value" type="text" placeholder="$800" required></label>
             </div>
-            <label>Piece details<textarea placeholder="10k gold ring, size 7, light wear, original receipt included."></textarea></label>
-            <button class="btn btn-primary" type="button">Submit interest</button>
+            <label for="piece-details">Piece details<textarea id="piece-details" name="details" placeholder="10k gold ring, size 7, light wear, original receipt included." required></textarea></label>
+            <input type="hidden" name="_subject" value="New consignment submission">
+            <button class="btn btn-primary" type="submit">Submit interest</button>
           </form>
         </div>
       </div>
@@ -454,9 +637,10 @@
         </div>
 
         <div class="faq" style="margin-top:2rem;">
-          <details open><summary>Do you sell both new and pre-owned jewelry?</summary><p>Yes. Inspired By Ian carries both curated new inventory and selected pre-owned or consignment pieces.</p></details>
-          <details><summary>Where do orders ship from?</summary><p>Orders ship from Vancouver Island, Canada.</p></details>
-          <details><summary>How does consignment work?</summary><p>Clients submit a piece for review, accepted items are listed through the store, and seller proceeds are paid according to the consignment agreement after sale.</p></details>
+          <details class="faq-item" open><summary>Do you sell both new and pre-owned jewelry?</summary><p>Yes. Inspired By Ian carries both curated new inventory and selected pre-owned or consignment pieces.</p></details>
+          <details class="faq-item"><summary>Where do orders ship from?</summary><p>Orders ship from Vancouver Island, Canada.</p></details>
+          <details class="faq-item"><summary>Is checkout live right now?</summary><p>No. The current cart is a demo only. It calculates totals but does not place a real order or process payment.</p></details>
+          <details class="faq-item"><summary>How does consignment work?</summary><p>Clients submit a piece for review, accepted items are listed through the store, and seller proceeds are paid according to the consignment agreement after sale.</p></details>
         </div>
       </div>
     </section>
@@ -493,12 +677,9 @@
     <div class="container footer-grid">
       <div>
         <a class="brand" href="#top" aria-label="Inspired By Ian home">
-          <svg class="brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            <circle cx="32" cy="32" r="25" stroke="currentColor" stroke-width="2.5"></circle>
-            <path d="M22 20h20M32 20v24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"></path>
-            <path d="M24 42c3-3 5-4 8-4s5 1 8 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"></path>
-          </svg>
-          <span class="brand-name">Inspired By Ian</span>
+          <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/fecdbd73-3ee4-4f2a-b5bd-b07ce2964755.png" alt="Inspired By Ian logo for light mode." class="brand-logo brand-logo-light" width="220" height="220" loading="lazy" decoding="async">
+          <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/862f7a1a-a98d-4304-b846-ff7a55c5b6d1.png" alt="Inspired By Ian logo for dark mode." class="brand-logo brand-logo-dark" width="220" height="220" loading="lazy" decoding="async">
+          <span class="sr-only">Inspired By Ian</span>
         </a>
         <p class="mini-note" style="margin-top:1rem; max-width:40ch;">Fine jewelry boutique based on Vancouver Island, Canada, offering curated new arrivals, pre-owned pieces, and consignment services.</p>
       </div>
@@ -588,7 +769,6 @@
       const taxEl = document.getElementById('cartTax');
       const totalEl = document.getElementById('cartTotal');
       const demoCheckoutBtn = document.getElementById('demoCheckoutBtn');
-
       const cartCountEls = document.querySelectorAll('[data-cart-count]');
       const cartTotalMiniEls = document.querySelectorAll('[data-cart-total]');
 
@@ -698,9 +878,7 @@
 
       function removeItem(id) {
         const index = cart.findIndex(item => item.id === id);
-        if (index > -1) {
-          cart.splice(index, 1);
-        }
+        if (index > -1) cart.splice(index, 1);
         renderCart();
       }
 
@@ -721,36 +899,15 @@
           });
           return;
         }
-
-        if (openBtn) {
-          openCart();
-          return;
-        }
-
-        if (closeBtn) {
-          closeCart();
-          return;
-        }
-
-        if (increaseBtn) {
-          changeQty(increaseBtn.dataset.increase, 1);
-          return;
-        }
-
-        if (decreaseBtn) {
-          changeQty(decreaseBtn.dataset.decrease, -1);
-          return;
-        }
-
-        if (removeBtn) {
-          removeItem(removeBtn.dataset.remove);
-        }
+        if (openBtn) { openCart(); return; }
+        if (closeBtn) { closeCart(); return; }
+        if (increaseBtn) { changeQty(increaseBtn.dataset.increase, 1); return; }
+        if (decreaseBtn) { changeQty(decreaseBtn.dataset.decrease, -1); return; }
+        if (removeBtn) { removeItem(removeBtn.dataset.remove); }
       });
 
       document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape') {
-          closeCart();
-        }
+        if (event.key === 'Escape') closeCart();
       });
 
       demoCheckoutBtn.addEventListener('click', function () {
