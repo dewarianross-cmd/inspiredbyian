@@ -4,12 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inspired By Ian — Fine Jewelry Boutique</title>
-  <meta name="description" content="Inspired By Ian is a fine jewelry boutique based in British Columbia offering curated new jewelry, pre-owned pieces, and consignment selling services." />
+  <meta name="description" content="Inspired By Ian is a fine jewelry boutique based on Vancouver Island, Canada offering curated new jewelry, pre-owned pieces, and consignment selling services." />
   <meta property="og:title" content="Inspired By Ian — Fine Jewelry Boutique" />
   <meta property="og:description" content="Shop curated new and pre-owned jewelry or consign your fine pieces through Inspired By Ian." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c1d11376-d0b7-479c-ab9e-49ae0331139a.png" />
   <meta name="theme-color" content="#8b6a3d" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.1/default/snipcart.css" />
+
   <style>
     :root,[data-theme="light"]{
       --text-xs:clamp(.75rem,.7rem + .25vw,.875rem);
@@ -19,10 +25,10 @@
       --text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
       --text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);
       --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--space-20:5rem;--space-24:6rem;
-      --color-bg:#f7f3ee;--color-surface:#fcfaf7;--color-surface-2:#f4efe8;--color-surface-offset:#ece5dc;--color-border:rgba(45,34,25,.12);--color-divider:rgba(45,34,25,.08);--color-text:#251c16;--color-text-muted:#75685d;--color-text-faint:#aa9e93;--color-text-inverse:#fffaf6;--color-primary:#8b6a3d;--color-primary-hover:#6f532d;--color-primary-highlight:#e8dcc9;--shadow-sm:0 1px 2px rgba(20,12,7,.06);--shadow-md:0 10px 30px rgba(20,12,7,.08);--radius-sm:.375rem;--radius-md:.65rem;--radius-lg:1rem;--radius-xl:1.5rem;--radius-full:9999px;--font-display:'Cormorant Garamond',Georgia,serif;--font-body:'Manrope',Arial,sans-serif;--content-default:1120px;--content-wide:1280px;--transition-interactive:180ms cubic-bezier(.16,1,.3,1)
+      --color-bg:#f7f3ee;--color-surface:#fcfaf7;--color-surface-2:#f4efe8;--color-border:rgba(45,34,25,.12);--color-divider:rgba(45,34,25,.08);--color-text:#251c16;--color-text-muted:#75685d;--color-text-inverse:#fffaf6;--color-primary:#8b6a3d;--color-primary-hover:#6f532d;--color-primary-highlight:#e8dcc9;--shadow-sm:0 1px 2px rgba(20,12,7,.06);--shadow-md:0 10px 30px rgba(20,12,7,.08);--radius-sm:.375rem;--radius-md:.65rem;--radius-lg:1rem;--radius-xl:1.5rem;--radius-full:9999px;--font-display:'Cormorant Garamond',Georgia,serif;--font-body:'Manrope',Arial,sans-serif;--content-default:1120px;--content-wide:1280px;--transition-interactive:180ms cubic-bezier(.16,1,.3,1)
     }
     [data-theme="dark"]{
-      --color-bg:#151210;--color-surface:#1b1714;--color-surface-2:#231d19;--color-surface-offset:#2c241f;--color-border:rgba(241,232,223,.12);--color-divider:rgba(241,232,223,.08);--color-text:#f1e8df;--color-text-muted:#b7a99d;--color-text-faint:#7f7268;--color-text-inverse:#1a1410;--color-primary:#d3b07b;--color-primary-hover:#e4c595;--color-primary-highlight:#3a2d22;--shadow-sm:0 1px 2px rgba(0,0,0,.25);--shadow-md:0 10px 30px rgba(0,0,0,.35)
+      --color-bg:#151210;--color-surface:#1b1714;--color-surface-2:#231d19;--color-border:rgba(241,232,223,.12);--color-divider:rgba(241,232,223,.08);--color-text:#f1e8df;--color-text-muted:#b7a99d;--color-text-inverse:#1a1410;--color-primary:#d3b07b;--color-primary-hover:#e4c595;--color-primary-highlight:#3a2d22;--shadow-sm:0 1px 2px rgba(0,0,0,.25);--shadow-md:0 10px 30px rgba(0,0,0,.35)
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-size-adjust:none;scroll-padding-top:90px}
@@ -48,7 +54,11 @@
     .nav{display:flex;gap:var(--space-5);align-items:center;flex-wrap:wrap}
     .nav a{font-size:var(--text-sm);color:var(--color-text-muted)}
     .nav a:hover{color:var(--color-text)}
-    .theme-toggle{width:44px;height:44px;border-radius:50%;border:1px solid var(--color-border);display:grid;place-items:center}
+    .header-actions{display:flex;align-items:center;gap:var(--space-3)}
+    .theme-toggle,.cart-button{min-width:44px;height:44px;border-radius:999px;border:1px solid var(--color-border);display:inline-flex;align-items:center;justify-content:center;background:var(--color-surface)}
+    .cart-button{padding:0 1rem;gap:.55rem}
+    .cart-button .count{display:inline-flex;min-width:1.4rem;height:1.4rem;align-items:center;justify-content:center;border-radius:999px;background:var(--color-primary);color:var(--color-text-inverse);font-size:.78rem;padding:0 .35rem}
+    .cart-button .total{font-size:var(--text-sm);color:var(--color-text-muted)}
     .btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 var(--space-5);border-radius:var(--radius-full);transition:all var(--transition-interactive)}
     .btn-primary{background:var(--color-primary);color:var(--color-text-inverse)}
     .btn-primary:hover{background:var(--color-primary-hover)}
@@ -64,8 +74,6 @@
     .stat strong{display:block;font-size:var(--text-lg);font-family:var(--font-display)}
     .hero-card{background:var(--color-surface);border-radius:var(--radius-xl);padding:var(--space-4);box-shadow:var(--shadow-md);border:1px solid var(--color-border)}
     .hero-card img{border-radius:calc(var(--radius-xl) - var(--space-4));width:100%;aspect-ratio:4/5;object-fit:cover}
-    .floating-note{position:absolute;left:-24px;bottom:34px;background:var(--color-surface);border:1px solid var(--color-border);box-shadow:var(--shadow-sm);border-radius:var(--radius-lg);padding:var(--space-4);max-width:240px}
-    .hero-visual{position:relative}
     .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-5)}
     .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-6)}
     .card,.panel,.policy-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);box-shadow:var(--shadow-sm)}
@@ -86,8 +94,6 @@
     .gallery{display:grid;gap:var(--space-4)}
     .gallery-main{border-radius:var(--radius-xl);overflow:hidden;border:1px solid var(--color-border)}
     .gallery-main img{width:100%;aspect-ratio:1/1.08;object-fit:cover}
-    .thumbs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-3)}
-    .thumbs img{border-radius:var(--radius-lg);aspect-ratio:1/1;object-fit:cover;border:1px solid var(--color-border)}
     .detail-panel{position:sticky;top:104px}
     .specs{display:grid;gap:var(--space-3);margin:var(--space-5) 0}
     .spec-row{display:flex;justify-content:space-between;gap:var(--space-4);padding-bottom:var(--space-3);border-bottom:1px solid var(--color-divider)}
@@ -111,15 +117,15 @@
       .hero-meta{grid-template-columns:1fr}
       .detail-panel{position:static}
       .nav{display:none}
-      .floating-note{position:static;margin-top:var(--space-4);max-width:none}
     }
 
     @media (max-width:640px){
-      .field-row,.thumbs{grid-template-columns:1fr}
+      .field-row{grid-template-columns:1fr}
       .header-inner{min-height:68px}
       .hero h1{max-width:12ch}
       .hero-actions{flex-direction:column;align-items:stretch}
       .btn{width:100%}
+      .cart-button .total{display:none}
     }
 
     @media (prefers-reduced-motion:reduce){
@@ -130,11 +136,13 @@
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
 
+  <div hidden id="snipcart" data-api-key="YOUR_SNIPCART_PUBLIC_API_KEY"></div>
+
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#top" aria-label="Inspired By Ian home">
         <svg class="brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-          ircle cx="32" cy="32" r="25" stroke="currentColor" stroke-width="2.5"></circle>
+          <circle cx="32" cy="32" r="25" stroke="currentColor" stroke-width="2.5"></circle>
           <path d="M22 20h20M32 20v24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"></path>
           <path d="M24 42c3-3 5-4 8-4s5 1 8 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"></path>
         </svg>
@@ -150,11 +158,23 @@
         <a href="#contact">Contact</a>
       </nav>
 
-      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-        </svg>
-      </button>
+      <div class="header-actions">
+        <button class="snipcart-checkout cart-button" type="button" aria-label="Open cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="9" cy="20" r="1"></circle>
+            <circle cx="18" cy="20" r="1"></circle>
+            <path d="M3 4h2l2.4 10.2a1 1 0 0 0 1 .8h9.8a1 1 0 0 0 1-.8L21 7H7"></path>
+          </svg>
+          <span class="count snipcart-items-count">0</span>
+          <span class="total">$<span class="snipcart-total-price">0.00</span></span>
+        </button>
+
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -168,13 +188,13 @@
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="#new">Browse new arrivals</a>
-            <a class="btn btn-secondary" href="#consign">Sell with us</a>
+            <button class="btn btn-secondary snipcart-checkout" type="button">View cart</button>
           </div>
 
           <div class="hero-meta">
             <div class="stat">
-              <strong>Based in BC</strong>
-              <span class="mini-note">Orders ship from British Columbia with direct customer support by email and phone.</span>
+              <strong>Based on Vancouver Island</strong>
+              <span class="mini-note">Orders ship from Vancouver Island, Canada with direct customer support by email and phone.</span>
             </div>
             <div class="stat">
               <strong>New + pre-owned</strong>
@@ -187,14 +207,8 @@
           </div>
         </div>
 
-        <div class="hero-visual">
-          <div class="hero-card">
-            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c1d11376-d0b7-479c-ab9e-49ae0331139a.png" alt="Featured 14K solid gold pendant necklace in boutique studio lighting" width="1024" height="1024" loading="eager">
-          </div>
-          <aside class="floating-note" aria-label="Customer promise">
-            <p class="eyebrow">Customer promise</p>
-            <p>Every order is presented with clear details, careful packaging, and direct support from the store.</p>
-          </aside>
+        <div class="hero-card">
+          <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c1d11376-d0b7-479c-ab9e-49ae0331139a.png" alt="Featured 14K solid gold pendant necklace in boutique studio lighting" width="1024" height="1024" loading="eager">
         </div>
       </div>
     </section>
@@ -213,7 +227,16 @@
               <h3>Lumière Chain Necklace</h3>
               <p class="muted">A delicate 10K solid gold chain designed for everyday wear, easy layering, and understated shine.</p>
               <p class="price">$549 CAD</p>
-              <a class="btn btn-secondary" href="#product">View details</a>
+              <button class="btn btn-primary snipcart-add-item" type="button"
+                data-item-id="lumiere-chain-necklace"
+                data-item-price="549.00"
+                data-item-url="https://inspiredbyian.com/#new"
+                data-item-description="A delicate 10K solid gold chain designed for everyday wear, easy layering, and understated shine."
+                data-item-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6bb89cdb-d72e-463f-852b-419dfc0dd3d7.png"
+                data-item-name="Lumière Chain Necklace"
+                data-item-currency="cad">
+                Add to cart
+              </button>
             </div>
           </article>
 
@@ -224,7 +247,16 @@
               <h3>Solstice Hoop Set</h3>
               <p class="muted">Lightweight 10K solid gold hoops with a polished finish that work for daily wear, gifting, or dressing up a simple look.</p>
               <p class="price">$329 CAD</p>
-              <a class="btn btn-secondary" href="#product">View details</a>
+              <button class="btn btn-primary snipcart-add-item" type="button"
+                data-item-id="solstice-hoop-set"
+                data-item-price="329.00"
+                data-item-url="https://inspiredbyian.com/#new"
+                data-item-description="Lightweight 10K solid gold hoops with a polished finish that work for daily wear, gifting, or dressing up a simple look."
+                data-item-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/07429cca-09a5-4078-93f6-a6cd8449cf5c.png"
+                data-item-name="Solstice Hoop Set"
+                data-item-currency="cad">
+                Add to cart
+              </button>
             </div>
           </article>
 
@@ -235,7 +267,16 @@
               <h3>Aurelia Ring Stack</h3>
               <p class="muted">A coordinated 14K solid gold ring set designed to be worn together or mixed into your everyday stack.</p>
               <p class="price">$1,295 CAD</p>
-              <a class="btn btn-secondary" href="#product">View details</a>
+              <button class="btn btn-primary snipcart-add-item" type="button"
+                data-item-id="aurelia-ring-stack"
+                data-item-price="1295.00"
+                data-item-url="https://inspiredbyian.com/#new"
+                data-item-description="A coordinated 14K solid gold ring set designed to be worn together or mixed into your everyday stack."
+                data-item-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/82946422-6028-43f5-956b-3e44083e2e5d.png"
+                data-item-name="Aurelia Ring Stack"
+                data-item-currency="cad">
+                Add to cart
+              </button>
             </div>
           </article>
         </div>
@@ -264,6 +305,17 @@
               <h3>Estate Link Bracelet</h3>
               <p class="muted">A pre-owned 10K solid gold bracelet with classic interlocking links and an easy everyday feel.</p>
               <p class="price">$895 CAD</p>
+              <button class="btn btn-primary snipcart-add-item" type="button"
+                data-item-id="estate-link-bracelet"
+                data-item-price="895.00"
+                data-item-url="https://inspiredbyian.com/#preowned"
+                data-item-description="A pre-owned 10K solid gold bracelet with classic interlocking links and an easy everyday feel."
+                data-item-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/443e24fe-8db5-43e5-82bc-8d8f87bd46a1.png"
+                data-item-name="Estate Link Bracelet"
+                data-item-currency="cad"
+                data-item-max-quantity="1">
+                Add to cart
+              </button>
             </div>
           </article>
 
@@ -274,6 +326,17 @@
               <h3>Heirloom Signet Ring</h3>
               <p class="muted">A one-of-a-kind 10K solid gold signet ring with strong vintage character and collectible appeal.</p>
               <p class="price">$1,550 CAD</p>
+              <button class="btn btn-primary snipcart-add-item" type="button"
+                data-item-id="heirloom-signet-ring"
+                data-item-price="1550.00"
+                data-item-url="https://inspiredbyian.com/#preowned"
+                data-item-description="A one-of-a-kind 10K solid gold signet ring with strong vintage character and collectible appeal."
+                data-item-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/52675aab-92ee-4fdb-a735-b88a751b06bf.png"
+                data-item-name="Heirloom Signet Ring"
+                data-item-currency="cad"
+                data-item-max-quantity="1">
+                Add to cart
+              </button>
             </div>
           </article>
         </div>
@@ -290,11 +353,6 @@
             <div class="gallery-main">
               <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c1d11376-d0b7-479c-ab9e-49ae0331139a.png" alt="Close-up product photo of the Celeste Pendant Necklace" width="1024" height="1024" loading="lazy">
             </div>
-            <div class="thumbs">
-              <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c1d11376-d0b7-479c-ab9e-49ae0331139a.png" alt="Celeste Pendant Necklace full product view" width="1024" height="1024" loading="lazy">
-              <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6bb89cdb-d72e-463f-852b-419dfc0dd3d7.png" alt="Delicate chain detail view for necklace styling reference" width="1024" height="1024" loading="lazy">
-              <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/07429cca-09a5-4078-93f6-a6cd8449cf5c.png" alt="Accessory styling companion image for jewelry collection" width="1024" height="1024" loading="lazy">
-            </div>
           </div>
 
           <aside class="detail-panel panel">
@@ -307,15 +365,22 @@
               <div class="spec-row"><span>Materials</span><strong>14K solid gold, cubic zirconia</strong></div>
               <div class="spec-row"><span>Length</span><strong>16–18 in adjustable</strong></div>
               <div class="spec-row"><span>Packaging</span><strong>Gift box + branded insert</strong></div>
-              <div class="spec-row"><span>Shipping origin</span><strong>Errington, British Columbia</strong></div>
+              <div class="spec-row"><span>Shipping origin</span><strong>Vancouver Island, Canada</strong></div>
             </div>
 
             <div class="hero-actions" style="margin-top:0;">
-              <button class="btn btn-primary" type="button">Add to cart</button>
-              <button class="btn btn-secondary" type="button">Save for later</button>
+              <button class="btn btn-primary snipcart-add-item" type="button"
+                data-item-id="celeste-pendant-necklace"
+                data-item-price="799.00"
+                data-item-url="https://inspiredbyian.com/#product"
+                data-item-description="A polished 14K solid gold pendant necklace with a cubic zirconia accent, designed for easy layering and giftable presentation."
+                data-item-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c1d11376-d0b7-479c-ab9e-49ae0331139a.png"
+                data-item-name="Celeste Pendant Necklace"
+                data-item-currency="cad">
+                Add to cart
+              </button>
+              <button class="btn btn-secondary snipcart-checkout" type="button">Checkout</button>
             </div>
-
-            <p class="mini-note" style="margin-top:1rem;">Pre-owned listings include condition notes, one-of-a-kind availability, and seller disclosure details where applicable.</p>
           </aside>
         </div>
       </div>
@@ -342,11 +407,11 @@
 
           <form>
             <div class="field-row">
-              abel>Full name<input type="text" placeholder="Jane Smith"></label>
-              abel>Email address<input type="email" placeholder="seller@email.com"></label>
+              <label>Full name<input type="text" placeholder="Jane Smith"></label>
+              <label>Email address<input type="email" placeholder="seller@email.com"></label>
             </div>
             <div class="field-row">
-              abel>Jewelry category
+              <label>Jewelry category
                 <select>
                   <option>Ring</option>
                   <option>Necklace</option>
@@ -355,9 +420,9 @@
                   <option>Other fine jewelry</option>
                 </select>
               </label>
-              abel>Estimated value<input type="text" placeholder="$800"></label>
+              <label>Estimated value<input type="text" placeholder="$800"></label>
             </div>
-            abel>Piece details<textarea placeholder="10k gold ring, size 7, light wear, original receipt included."></textarea></label>
+            <label>Piece details<textarea placeholder="10k gold ring, size 7, light wear, original receipt included."></textarea></label>
             <button class="btn btn-primary" type="button">Submit interest</button>
           </form>
         </div>
@@ -372,7 +437,7 @@
         <div class="policy-grid" style="margin-top:2rem;">
           <article class="policy-card">
             <h3>Shipping policy</h3>
-            <p class="muted">Orders are processed within 1–3 business days and ship from Errington, British Columbia. Tracking details are issued once the order is dispatched, and signature confirmation may be used for higher-value shipments.</p>
+            <p class="muted">Orders are processed within 1–3 business days and ship from Vancouver Island, Canada. Tracking details are issued once the order is dispatched, and signature confirmation may be used for higher-value shipments.</p>
           </article>
           <article class="policy-card">
             <h3>Returns policy</h3>
@@ -385,8 +450,8 @@
         </div>
 
         <div class="faq" style="margin-top:2rem;">
-          <details open><summary>Do you sell both new and pre-owned jewelry?</summary><p>Yes. Inspired By Ian is a boutique carrying both curated new inventory and selected pre-owned or consignment pieces.</p></details>
-          <details><summary>Where do orders ship from?</summary><p>Orders ship from Errington, British Columbia.</p></details>
+          <details open><summary>Do you sell both new and pre-owned jewelry?</summary><p>Yes. Inspired By Ian carries both curated new inventory and selected pre-owned or consignment pieces.</p></details>
+          <details><summary>Where do orders ship from?</summary><p>Orders ship from Vancouver Island, Canada.</p></details>
           <details><summary>How does consignment work?</summary><p>Clients submit a piece for review, accepted items are listed through the store, and seller proceeds are paid according to the consignment agreement after sale.</p></details>
         </div>
       </div>
@@ -400,13 +465,11 @@
           <p class="lede">Reach out for product questions, order support, or consignment inquiries.</p>
 
           <ul class="contact-list" style="margin-top:1.5rem;">
-            ><strong>Business name:</strong> Inspired By Ian</l/li>
-            ><strong>Email:</strong> <a href="mailto:dewarianross@gmail.com">dewarianross@gmail.com</a></l/li>
-            ><strong>Phone:</strong> <a href="tel:+18256097217">825-609-7217</a></l/li>
-            ><strong>Address:</strong> 1606 McKibbon Rd, Errington BC</l/li>
-            ><strong>Support hours:</strong> 9:00 AM to 5:00 PM</li>
-            ><strong>After-hours support:</strong> On-call support may be available depending on urgency</l/li>
-            ><strong>Social profiles:</strong> Instagram coming soon</li>
+            <li><strong>Business name:</strong> Inspired By Ian</li>
+            <li><strong>Email:</strong> <a href="mailto:dewarianross@gmail.com">dewarianross@gmail.com</a></li>
+            <li><strong>Phone:</strong> <a href="tel:+18256097217">825-609-7217</a></li>
+            <li><strong>Location:</strong> Vancouver Island, Canada</li>
+            <li><strong>Support hours:</strong> 9:00 AM to 5:00 PM</li>
           </ul>
         </div>
 
@@ -427,34 +490,36 @@
       <div>
         <a class="brand" href="#top" aria-label="Inspired By Ian home">
           <svg class="brand-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true">
-            ircle cx="32" cy="32" r="25" stroke="currentColor" stroke-width="2.5"></circle>
+            <circle cx="32" cy="32" r="25" stroke="currentColor" stroke-width="2.5"></circle>
             <path d="M22 20h20M32 20v24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"></path>
             <path d="M24 42c3-3 5-4 8-4s5 1 8 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"></path>
           </svg>
           <span class="brand-name">Inspired By Ian</span>
         </a>
-        <p class="mini-note" style="margin-top:1rem; max-width:40ch;">Fine jewelry boutique based in Errington, British Columbia, offering curated new arrivals, pre-owned pieces, and consignment services.</p>
+        <p class="mini-note" style="margin-top:1rem; max-width:40ch;">Fine jewelry boutique based on Vancouver Island, Canada, offering curated new arrivals, pre-owned pieces, and consignment services.</p>
       </div>
 
       <div>
         <h3 style="font-family:var(--font-display); font-size:var(--text-lg); margin-bottom:1rem;">Contact</h3>
-        <ul class="footer-linksks">
-          ><a href="mailto:dewarianross@gmail.com">dewarianross@gmail.com</a></l/li>
-          ><a href="tel:+18256097217">825-609-7217</a></l/li>
-          >1606 McKibbon Rd, Errington BC</li>
-        <>
+        <ul class="footer-links">
+          <li><a href="mailto:dewarianross@gmail.com">dewarianross@gmail.com</a></li>
+          <li><a href="tel:+18256097217">825-609-7217</a></li>
+          <li>Vancouver Island, Canada</li>
+        </ul>
+      </div>
 
       <div>
         <h3 style="font-family:var(--font-display); font-size:var(--text-lg); margin-bottom:1rem;">Store</h3>
         <ul class="footer-links">
-          ><a href="#new">New jewelry</a></li>
-          ><a href="#preowned">Pre-owned</a></li>
-          ><a href="#consign">Sell with us</a></li>
+          <li><a href="#new">New jewelry</a></li>
+          <li><a href="#preowned">Pre-owned</a></li>
+          <li><a href="#consign">Sell with us</a></li>
         </ul>
       </div>
     </div>
   </footer>
 
+  <script async src="https://cdn.snipcart.com/themes/v3.3.1/default/snipcart.js"></script>
   <script>
     (function(){
       const t=document.querySelector('[data-theme-toggle]');
@@ -463,7 +528,7 @@
 
       function icon(mode){
         return mode==='dark'
-          ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">ircle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+          ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
           : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
       }
 
