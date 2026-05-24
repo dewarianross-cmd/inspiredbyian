@@ -14,7 +14,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.1/default/snipcart.css" />
 
   <style>
     :root,[data-theme="light"]{
@@ -23,9 +22,8 @@
       --text-base:clamp(1rem,.95rem + .25vw,1.125rem);
       --text-lg:clamp(1.125rem,1rem + .75vw,1.5rem);
       --text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
-      --text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);
-      --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--space-20:5rem;--space-24:6rem;
-      --color-bg:#f7f3ee;--color-surface:#fcfaf7;--color-surface-2:#f4efe8;--color-border:rgba(45,34,25,.12);--color-divider:rgba(45,34,25,.08);--color-text:#251c16;--color-text-muted:#75685d;--color-text-inverse:#fffaf6;--color-primary:#8b6a3d;--color-primary-hover:#6f532d;--color-primary-highlight:#e8dcc9;--shadow-sm:0 1px 2px rgba(20,12,7,.06);--shadow-md:0 10px 30px rgba(20,12,7,.08);--radius-sm:.375rem;--radius-md:.65rem;--radius-lg:1rem;--radius-xl:1.5rem;--radius-full:9999px;--font-display:'Cormorant Garamond',Georgia,serif;--font-body:'Manrope',Arial,sans-serif;--content-default:1120px;--content-wide:1280px;--transition-interactive:180ms cubic-bezier(.16,1,.3,1)
+      --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;--space-24:6rem;
+      --color-bg:#f7f3ee;--color-surface:#fcfaf7;--color-surface-2:#f4efe8;--color-border:rgba(45,34,25,.12);--color-divider:rgba(45,34,25,.08);--color-text:#251c16;--color-text-muted:#75685d;--color-text-inverse:#fffaf6;--color-primary:#8b6a3d;--color-primary-hover:#6f532d;--color-primary-highlight:#e8dcc9;--shadow-sm:0 1px 2px rgba(20,12,7,.06);--shadow-md:0 10px 30px rgba(20,12,7,.12);--radius-sm:.375rem;--radius-md:.65rem;--radius-lg:1rem;--radius-xl:1.5rem;--radius-full:9999px;--font-display:'Cormorant Garamond',Georgia,serif;--font-body:'Manrope',Arial,sans-serif;--content-default:1120px;--content-wide:1280px;--transition-interactive:180ms cubic-bezier(.16,1,.3,1)
     }
     [data-theme="dark"]{
       --color-bg:#151210;--color-surface:#1b1714;--color-surface-2:#231d19;--color-border:rgba(241,232,223,.12);--color-divider:rgba(241,232,223,.08);--color-text:#f1e8df;--color-text-muted:#b7a99d;--color-text-inverse:#1a1410;--color-primary:#d3b07b;--color-primary-hover:#e4c595;--color-primary-highlight:#3a2d22;--shadow-sm:0 1px 2px rgba(0,0,0,.25);--shadow-md:0 10px 30px rgba(0,0,0,.35)
@@ -112,6 +110,28 @@
     .footer{padding:var(--space-12) 0;border-top:1px solid var(--color-divider)}
     .footer-grid{display:grid;grid-template-columns:1.1fr .9fr .9fr;gap:var(--space-6)}
 
+    .cart-drawer{position:fixed;inset:0;z-index:120;pointer-events:none}
+    .cart-drawer.is-open{pointer-events:auto}
+    .cart-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.45);opacity:0;transition:opacity 180ms ease}
+    .cart-panel{position:absolute;top:0;right:0;width:min(100%,420px);height:100%;background:var(--color-surface);color:var(--color-text);border-left:1px solid var(--color-border);box-shadow:var(--shadow-md);transform:translateX(100%);transition:transform 220ms ease;display:grid;grid-template-rows:auto 1fr auto}
+    .cart-drawer.is-open .cart-backdrop{opacity:1}
+    .cart-drawer.is-open .cart-panel{transform:translateX(0)}
+    .cart-header,.cart-footer{padding:var(--space-5)}
+    .cart-header{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);border-bottom:1px solid var(--color-divider)}
+    .cart-footer{border-top:1px solid var(--color-divider);background:var(--color-surface-2)}
+    .cart-close{width:44px;height:44px;border-radius:var(--radius-full);border:1px solid var(--color-border);display:inline-flex;align-items:center;justify-content:center;background:var(--color-surface)}
+    .cart-body{overflow:auto;padding:var(--space-5)}
+    .cart-empty{color:var(--color-text-muted)}
+    .cart-item{display:grid;grid-template-columns:72px 1fr;gap:var(--space-4);padding-bottom:var(--space-4);margin-bottom:var(--space-4);border-bottom:1px solid var(--color-divider)}
+    .cart-item img{width:72px;height:72px;object-fit:cover;border-radius:var(--radius-md);background:var(--color-surface-2)}
+    .cart-item h3{font-size:var(--text-base);margin-bottom:.25rem}
+    .cart-item p{font-size:var(--text-sm);color:var(--color-text-muted);margin-bottom:.5rem}
+    .cart-controls{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+    .qty-btn,.remove-btn{min-height:38px;padding:0 .85rem;border-radius:var(--radius-full);border:1px solid var(--color-border);background:var(--color-surface-2)}
+    .cart-row{display:flex;align-items:center;justify-content:space-between;gap:var(--space-3);margin-bottom:.65rem}
+    .cart-total{font-size:var(--text-lg);margin-top:var(--space-3)}
+    .cart-note{color:var(--color-text-muted);font-size:var(--text-xs);margin:var(--space-4) 0}
+
     @media (max-width:980px){
       .hero-grid,.split-panel,.detail-layout,.footer-grid,.grid-3,.grid-2,.policy-grid{grid-template-columns:1fr}
       .hero-meta{grid-template-columns:1fr}
@@ -136,8 +156,6 @@
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
 
-  <div hidden id="snipcart" data-api-key="YOUR_SNIPCART_PUBLIC_API_KEY"></div>
-
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#top" aria-label="Inspired By Ian home">
@@ -159,14 +177,14 @@
       </nav>
 
       <div class="header-actions">
-        <button class="snipcart-checkout cart-button" type="button" aria-label="Open cart">
+        <button class="cart-button" type="button" data-open-cart aria-label="Open cart">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <circle cx="9" cy="20" r="1"></circle>
             <circle cx="18" cy="20" r="1"></circle>
             <path d="M3 4h2l2.4 10.2a1 1 0 0 0 1 .8h9.8a1 1 0 0 0 1-.8L21 7H7"></path>
           </svg>
-          <span class="count snipcart-items-count">0</span>
-          <span class="total">$<span class="snipcart-total-price">0.00</span></span>
+          <span class="count" data-cart-count>0</span>
+          <span class="total">$<span data-cart-total>0.00</span></span>
         </button>
 
         <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
@@ -188,7 +206,7 @@
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="#new">Browse new arrivals</a>
-            <button class="btn btn-secondary snipcart-checkout" type="button">View cart</button>
+            <button class="btn btn-secondary" type="button" data-open-cart>View cart</button>
           </div>
 
           <div class="hero-meta">
@@ -208,7 +226,7 @@
         </div>
 
         <div class="hero-card">
-          <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c1d11376-d0b7-479c-ab9e-49ae0331139a.png" alt="Featured 14K solid gold pendant necklace in boutique studio lighting" width="1024" height="1024" loading="eager">
+          <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c1d11376-d0b7-479c-ab9e-49ae0331139a.png" alt="Featured 14K solid gold pendant necklace in boutique studio lighting" width="1024" height="1024" loading="eager" decoding="async">
         </div>
       </div>
     </section>
@@ -221,60 +239,54 @@
 
         <div class="grid-3" style="margin-top:2rem;">
           <article class="card product-card">
-            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6bb89cdb-d72e-463f-852b-419dfc0dd3d7.png" alt="Lumière Chain Necklace product photo" width="1024" height="1024" loading="lazy">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6bb89cdb-d72e-463f-852b-419dfc0dd3d7.png" alt="Lumière Chain Necklace product photo" width="1024" height="1024" loading="lazy" decoding="async">
             <div class="card-body">
               <div class="badge-row"><span class="badge">10K Solid Gold</span><span class="badge">Best seller</span></div>
               <h3>Lumière Chain Necklace</h3>
               <p class="muted">A delicate 10K solid gold chain designed for everyday wear, easy layering, and understated shine.</p>
               <p class="price">$549 CAD</p>
-              <button class="btn btn-primary snipcart-add-item" type="button"
-                data-item-id="lumiere-chain-necklace"
-                data-item-price="549.00"
-                data-item-url="https://inspiredbyian.com/#new"
-                data-item-description="A delicate 10K solid gold chain designed for everyday wear, easy layering, and understated shine."
-                data-item-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6bb89cdb-d72e-463f-852b-419dfc0dd3d7.png"
-                data-item-name="Lumière Chain Necklace"
-                data-item-currency="cad">
+              <button class="btn btn-primary" type="button"
+                data-add-to-cart
+                data-id="lumiere-chain-necklace"
+                data-name="Lumière Chain Necklace"
+                data-price="549.00"
+                data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6bb89cdb-d72e-463f-852b-419dfc0dd3d7.png">
                 Add to cart
               </button>
             </div>
           </article>
 
           <article class="card product-card">
-            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/07429cca-09a5-4078-93f6-a6cd8449cf5c.png" alt="Solstice Hoop Set product photo" width="1024" height="1024" loading="lazy">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/07429cca-09a5-4078-93f6-a6cd8449cf5c.png" alt="Solstice Hoop Set product photo" width="1024" height="1024" loading="lazy" decoding="async">
             <div class="card-body">
               <div class="badge-row"><span class="badge">10K Solid Gold</span><span class="badge">Giftable</span></div>
               <h3>Solstice Hoop Set</h3>
               <p class="muted">Lightweight 10K solid gold hoops with a polished finish that work for daily wear, gifting, or dressing up a simple look.</p>
               <p class="price">$329 CAD</p>
-              <button class="btn btn-primary snipcart-add-item" type="button"
-                data-item-id="solstice-hoop-set"
-                data-item-price="329.00"
-                data-item-url="https://inspiredbyian.com/#new"
-                data-item-description="Lightweight 10K solid gold hoops with a polished finish that work for daily wear, gifting, or dressing up a simple look."
-                data-item-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/07429cca-09a5-4078-93f6-a6cd8449cf5c.png"
-                data-item-name="Solstice Hoop Set"
-                data-item-currency="cad">
+              <button class="btn btn-primary" type="button"
+                data-add-to-cart
+                data-id="solstice-hoop-set"
+                data-name="Solstice Hoop Set"
+                data-price="329.00"
+                data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/07429cca-09a5-4078-93f6-a6cd8449cf5c.png">
                 Add to cart
               </button>
             </div>
           </article>
 
           <article class="card product-card">
-            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/82946422-6028-43f5-956b-3e44083e2e5d.png" alt="Aurelia Ring Stack product photo" width="1024" height="1024" loading="lazy">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/82946422-6028-43f5-956b-3e44083e2e5d.png" alt="Aurelia Ring Stack product photo" width="1024" height="1024" loading="lazy" decoding="async">
             <div class="card-body">
               <div class="badge-row"><span class="badge">14K Solid Gold</span><span class="badge">Layering edit</span></div>
               <h3>Aurelia Ring Stack</h3>
               <p class="muted">A coordinated 14K solid gold ring set designed to be worn together or mixed into your everyday stack.</p>
               <p class="price">$1,295 CAD</p>
-              <button class="btn btn-primary snipcart-add-item" type="button"
-                data-item-id="aurelia-ring-stack"
-                data-item-price="1295.00"
-                data-item-url="https://inspiredbyian.com/#new"
-                data-item-description="A coordinated 14K solid gold ring set designed to be worn together or mixed into your everyday stack."
-                data-item-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/82946422-6028-43f5-956b-3e44083e2e5d.png"
-                data-item-name="Aurelia Ring Stack"
-                data-item-currency="cad">
+              <button class="btn btn-primary" type="button"
+                data-add-to-cart
+                data-id="aurelia-ring-stack"
+                data-name="Aurelia Ring Stack"
+                data-price="1295.00"
+                data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/82946422-6028-43f5-956b-3e44083e2e5d.png">
                 Add to cart
               </button>
             </div>
@@ -299,42 +311,36 @@
 
         <div class="grid-2">
           <article class="card product-card">
-            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/443e24fe-8db5-43e5-82bc-8d8f87bd46a1.png" alt="Estate Link Bracelet product photo" width="1024" height="1024" loading="lazy">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/443e24fe-8db5-43e5-82bc-8d8f87bd46a1.png" alt="Estate Link Bracelet product photo" width="1024" height="1024" loading="lazy" decoding="async">
             <div class="card-body">
               <div class="badge-row"><span class="badge">Pre-owned</span><span class="badge">10K Solid Gold</span></div>
               <h3>Estate Link Bracelet</h3>
               <p class="muted">A pre-owned 10K solid gold bracelet with classic interlocking links and an easy everyday feel.</p>
               <p class="price">$895 CAD</p>
-              <button class="btn btn-primary snipcart-add-item" type="button"
-                data-item-id="estate-link-bracelet"
-                data-item-price="895.00"
-                data-item-url="https://inspiredbyian.com/#preowned"
-                data-item-description="A pre-owned 10K solid gold bracelet with classic interlocking links and an easy everyday feel."
-                data-item-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/443e24fe-8db5-43e5-82bc-8d8f87bd46a1.png"
-                data-item-name="Estate Link Bracelet"
-                data-item-currency="cad"
-                data-item-max-quantity="1">
+              <button class="btn btn-primary" type="button"
+                data-add-to-cart
+                data-id="estate-link-bracelet"
+                data-name="Estate Link Bracelet"
+                data-price="895.00"
+                data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/443e24fe-8db5-43e5-82bc-8d8f87bd46a1.png">
                 Add to cart
               </button>
             </div>
           </article>
 
           <article class="card product-card">
-            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/52675aab-92ee-4fdb-a735-b88a751b06bf.png" alt="Heirloom Signet Ring product photo" width="1024" height="1024" loading="lazy">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/52675aab-92ee-4fdb-a735-b88a751b06bf.png" alt="Heirloom Signet Ring product photo" width="1024" height="1024" loading="lazy" decoding="async">
             <div class="card-body">
               <div class="badge-row"><span class="badge">Consignment</span><span class="badge">10K Solid Gold</span></div>
               <h3>Heirloom Signet Ring</h3>
               <p class="muted">A one-of-a-kind 10K solid gold signet ring with strong vintage character and collectible appeal.</p>
               <p class="price">$1,550 CAD</p>
-              <button class="btn btn-primary snipcart-add-item" type="button"
-                data-item-id="heirloom-signet-ring"
-                data-item-price="1550.00"
-                data-item-url="https://inspiredbyian.com/#preowned"
-                data-item-description="A one-of-a-kind 10K solid gold signet ring with strong vintage character and collectible appeal."
-                data-item-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/52675aab-92ee-4fdb-a735-b88a751b06bf.png"
-                data-item-name="Heirloom Signet Ring"
-                data-item-currency="cad"
-                data-item-max-quantity="1">
+              <button class="btn btn-primary" type="button"
+                data-add-to-cart
+                data-id="heirloom-signet-ring"
+                data-name="Heirloom Signet Ring"
+                data-price="1550.00"
+                data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/52675aab-92ee-4fdb-a735-b88a751b06bf.png">
                 Add to cart
               </button>
             </div>
@@ -351,7 +357,7 @@
         <div class="detail-layout" style="margin-top:2rem;">
           <div class="gallery">
             <div class="gallery-main">
-              <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c1d11376-d0b7-479c-ab9e-49ae0331139a.png" alt="Close-up product photo of the Celeste Pendant Necklace" width="1024" height="1024" loading="lazy">
+              <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c1d11376-d0b7-479c-ab9e-49ae0331139a.png" alt="Close-up product photo of the Celeste Pendant Necklace" width="1024" height="1024" loading="lazy" decoding="async">
             </div>
           </div>
 
@@ -369,17 +375,15 @@
             </div>
 
             <div class="hero-actions" style="margin-top:0;">
-              <button class="btn btn-primary snipcart-add-item" type="button"
-                data-item-id="celeste-pendant-necklace"
-                data-item-price="799.00"
-                data-item-url="https://inspiredbyian.com/#product"
-                data-item-description="A polished 14K solid gold pendant necklace with a cubic zirconia accent, designed for easy layering and giftable presentation."
-                data-item-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c1d11376-d0b7-479c-ab9e-49ae0331139a.png"
-                data-item-name="Celeste Pendant Necklace"
-                data-item-currency="cad">
+              <button class="btn btn-primary" type="button"
+                data-add-to-cart
+                data-id="celeste-pendant-necklace"
+                data-name="Celeste Pendant Necklace"
+                data-price="799.00"
+                data-image="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c1d11376-d0b7-479c-ab9e-49ae0331139a.png">
                 Add to cart
               </button>
-              <button class="btn btn-secondary snipcart-checkout" type="button">Checkout</button>
+              <button class="btn btn-secondary" type="button" data-open-cart>View cart</button>
             </div>
           </aside>
         </div>
@@ -397,7 +401,7 @@
             <div class="step"><span>1. Submission</span><p>Send photos and basic details for rings, necklaces, bracelets, earrings, or other select fine jewelry pieces.</p></div>
             <div class="step"><span>2. Review</span><p>Accepted pieces are reviewed for condition, resale fit, and listing potential before they move forward.</p></div>
             <div class="step"><span>3. Listing</span><p>Approved items are photographed, described, priced, and listed through the store.</p></div>
-            <div class="step"><span>4. Sale + payout</span><p>After the item sells and the applicable return window ends, seller proceeds are paid according to the consignment agreement.</p></div>
+            <div class="step"><span>4. Sale + payout</span><p>After the item sells and the applicable return window ends, seller proceeds are paid according to the consignment agreement after sale.</p></div>
           </div>
         </div>
 
@@ -519,7 +523,32 @@
     </div>
   </footer>
 
-  <script async src="https://cdn.snipcart.com/themes/v3.3.1/default/snipcart.js"></script>
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-backdrop" data-close-cart></div>
+    <div class="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+      <div class="cart-header">
+        <h2 id="cartTitle" style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:600;">Your Cart</h2>
+        <button type="button" class="cart-close" data-close-cart aria-label="Close cart">✕</button>
+      </div>
+
+      <div class="cart-body">
+        <div id="cartItems"></div>
+        <div class="cart-empty" id="cartEmpty">
+          <p>Your cart is empty.</p>
+        </div>
+      </div>
+
+      <div class="cart-footer">
+        <div class="cart-row"><span>Subtotal</span><strong id="cartSubtotal">$0.00</strong></div>
+        <div class="cart-row"><span>Shipping</span><strong id="cartShipping">$0.00</strong></div>
+        <div class="cart-row"><span>Tax</span><strong id="cartTax">$0.00</strong></div>
+        <div class="cart-row cart-total"><span>Total</span><strong id="cartTotal">$0.00</strong></div>
+        <p class="cart-note">Temporary demo cart only. No order is submitted and no payment is processed.</p>
+        <button type="button" class="btn btn-primary" id="demoCheckoutBtn">Demo checkout only</button>
+      </div>
+    </div>
+  </aside>
+
   <script>
     (function(){
       const t=document.querySelector('[data-theme-toggle]');
@@ -543,6 +572,192 @@
         d=d==='dark'?'light':'dark';
         apply(d);
       });
+    })();
+
+    (function () {
+      const TAX_RATE = 0.12;
+      const FLAT_SHIPPING = 20;
+      const FREE_SHIPPING_THRESHOLD = 500;
+
+      const cart = [];
+      const drawer = document.getElementById('cartDrawer');
+      const cartItemsEl = document.getElementById('cartItems');
+      const cartEmptyEl = document.getElementById('cartEmpty');
+      const subtotalEl = document.getElementById('cartSubtotal');
+      const shippingEl = document.getElementById('cartShipping');
+      const taxEl = document.getElementById('cartTax');
+      const totalEl = document.getElementById('cartTotal');
+      const demoCheckoutBtn = document.getElementById('demoCheckoutBtn');
+
+      const cartCountEls = document.querySelectorAll('[data-cart-count]');
+      const cartTotalMiniEls = document.querySelectorAll('[data-cart-total]');
+
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      function money(value) {
+        return new Intl.NumberFormat('en-CA', {
+          style: 'currency',
+          currency: 'CAD'
+        }).format(value);
+      }
+
+      function openCart() {
+        drawer.classList.add('is-open');
+        drawer.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeCart() {
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+      }
+
+      function getCartCount() {
+        return cart.reduce((sum, item) => sum + item.quantity, 0);
+      }
+
+      function getSubtotal() {
+        return cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      }
+
+      function getShipping(subtotal) {
+        if (subtotal <= 0) return 0;
+        if (subtotal >= FREE_SHIPPING_THRESHOLD) return 0;
+        return FLAT_SHIPPING;
+      }
+
+      function updateHeaderSummary(subtotal) {
+        const count = getCartCount();
+        cartCountEls.forEach(el => el.textContent = count);
+        cartTotalMiniEls.forEach(el => el.textContent = subtotal.toFixed(2));
+      }
+
+      function renderCart() {
+        const subtotal = getSubtotal();
+        const shipping = getShipping(subtotal);
+        const tax = (subtotal + shipping) * TAX_RATE;
+        const total = subtotal + shipping + tax;
+
+        updateHeaderSummary(subtotal);
+
+        if (cart.length === 0) {
+          cartItemsEl.innerHTML = '';
+          cartEmptyEl.hidden = false;
+        } else {
+          cartEmptyEl.hidden = true;
+          cartItemsEl.innerHTML = cart.map(item => `
+            <article class="cart-item">
+              <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.name)}" width="72" height="72" loading="lazy" decoding="async">
+              <div>
+                <h3>${escapeHtml(item.name)}</h3>
+                <p>${money(item.price)} each</p>
+                <div class="cart-controls">
+                  <button class="qty-btn" type="button" data-decrease="${escapeHtml(item.id)}">−</button>
+                  <span>Qty: ${item.quantity}</span>
+                  <button class="qty-btn" type="button" data-increase="${escapeHtml(item.id)}">+</button>
+                  <button class="remove-btn" type="button" data-remove="${escapeHtml(item.id)}">Remove</button>
+                </div>
+              </div>
+            </article>
+          `).join('');
+        }
+
+        subtotalEl.textContent = money(subtotal);
+        shippingEl.textContent = money(shipping);
+        taxEl.textContent = money(tax);
+        totalEl.textContent = money(total);
+      }
+
+      function addToCart(product) {
+        const existing = cart.find(item => item.id === product.id);
+        if (existing) {
+          existing.quantity += 1;
+        } else {
+          cart.push({ ...product, quantity: 1 });
+        }
+        renderCart();
+        openCart();
+      }
+
+      function changeQty(id, delta) {
+        const item = cart.find(entry => entry.id === id);
+        if (!item) return;
+        item.quantity += delta;
+        if (item.quantity <= 0) {
+          removeItem(id);
+          return;
+        }
+        renderCart();
+      }
+
+      function removeItem(id) {
+        const index = cart.findIndex(item => item.id === id);
+        if (index > -1) {
+          cart.splice(index, 1);
+        }
+        renderCart();
+      }
+
+      document.addEventListener('click', function (event) {
+        const addBtn = event.target.closest('[data-add-to-cart]');
+        const openBtn = event.target.closest('[data-open-cart]');
+        const closeBtn = event.target.closest('[data-close-cart]');
+        const increaseBtn = event.target.closest('[data-increase]');
+        const decreaseBtn = event.target.closest('[data-decrease]');
+        const removeBtn = event.target.closest('[data-remove]');
+
+        if (addBtn) {
+          addToCart({
+            id: addBtn.dataset.id,
+            name: addBtn.dataset.name,
+            price: Number(addBtn.dataset.price),
+            image: addBtn.dataset.image
+          });
+          return;
+        }
+
+        if (openBtn) {
+          openCart();
+          return;
+        }
+
+        if (closeBtn) {
+          closeCart();
+          return;
+        }
+
+        if (increaseBtn) {
+          changeQty(increaseBtn.dataset.increase, 1);
+          return;
+        }
+
+        if (decreaseBtn) {
+          changeQty(decreaseBtn.dataset.decrease, -1);
+          return;
+        }
+
+        if (removeBtn) {
+          removeItem(removeBtn.dataset.remove);
+        }
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          closeCart();
+        }
+      });
+
+      demoCheckoutBtn.addEventListener('click', function () {
+        alert('Demo only: this cart does not place an order or process payment.');
+      });
+
+      renderCart();
     })();
   </script>
 </body>
