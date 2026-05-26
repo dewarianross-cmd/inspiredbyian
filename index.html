@@ -101,8 +101,7 @@
     .gallery{display:grid;gap:var(--space-4)}
     .gallery-main{border-radius:var(--radius-xl);overflow:hidden;border:1px solid var(--color-border)}
     .gallery-main img{width:100%;aspect-ratio:1/1.08;object-fit:cover}
-    .thumbs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-3)}
-    .thumbs img{border-radius:var(--radius-lg);aspect-ratio:1/1;object-fit:cover;border:1px solid var(--color-border)}
+    .thumbs{display:none}
     .detail-panel{position:sticky;top:104px}
     .specs{display:grid;gap:var(--space-3);margin:var(--space-5) 0}
     .spec-row{display:flex;justify-content:space-between;gap:var(--space-4);padding-bottom:var(--space-3);border-bottom:1px solid var(--color-divider)}
@@ -147,7 +146,7 @@
       .nav{display:none}
     }
     @media (max-width:640px){
-      .field-row,.thumbs{grid-template-columns:1fr}
+      .field-row{grid-template-columns:1fr}
       .header-inner{min-height:68px}
       .hero h1{max-width:12ch}
       .hero-actions{flex-direction:column;align-items:stretch}
@@ -364,10 +363,6 @@
           <div class="gallery-main">
             <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/0645dffc-e342-4a99-9640-0d123f5a2aec.png" alt="Lumière Chain Necklace close-up product image" width="1024" height="1024" loading="lazy" decoding="async">
           </div>
-          <div class="thumbs">
-            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/0645dffc-e342-4a99-9640-0d123f5a2aec.png" alt="Lumière Chain Necklace front view" width="1024" height="1024" loading="lazy" decoding="async">
-            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/0645dffc-e342-4a99-9640-0d123f5a2aec.png" alt="Lumière Chain Necklace angled view" width="1024" height="1024" loading="lazy" decoding="async">
-          </div>
         </div>
 
         <aside class="detail-panel panel">
@@ -395,10 +390,6 @@
         <div class="gallery">
           <div class="gallery-main">
             <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/36068673-cb78-4a04-9a10-82ab33528a35.png" alt="Solstice Hoop Set close-up product image" width="1024" height="1024" loading="lazy" decoding="async">
-          </div>
-          <div class="thumbs">
-            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/36068673-cb78-4a04-9a10-82ab33528a35.png" alt="Solstice Hoop Set front view" width="1024" height="1024" loading="lazy" decoding="async">
-            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/36068673-cb78-4a04-9a10-82ab33528a35.png" alt="Solstice Hoop Set angled view" width="1024" height="1024" loading="lazy" decoding="async">
           </div>
         </div>
 
@@ -428,10 +419,6 @@
           <div class="gallery-main">
             <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6c7ec193-13e7-4a4f-be38-252232b4bb7a.png" alt="Aurelia Ring Stack close-up product image" width="1024" height="1024" loading="lazy" decoding="async">
           </div>
-          <div class="thumbs">
-            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6c7ec193-13e7-4a4f-be38-252232b4bb7a.png" alt="Aurelia Ring Stack front view" width="1024" height="1024" loading="lazy" decoding="async">
-            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/6c7ec193-13e7-4a4f-be38-252232b4bb7a.png" alt="Aurelia Ring Stack angled view" width="1024" height="1024" loading="lazy" decoding="async">
-          </div>
         </div>
 
         <aside class="detail-panel panel">
@@ -458,10 +445,6 @@
         <div class="gallery">
           <div class="gallery-main">
             <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/7d19ccab-d385-40df-9b0c-7b6953117677.png" alt="Estate Link Bracelet hero view" width="1024" height="1024" loading="lazy" decoding="async">
-          </div>
-          <div class="thumbs">
-            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/7d19ccab-d385-40df-9b0c-7b6953117677.png" alt="Estate Link Bracelet front view" width="1024" height="1024" loading="lazy" decoding="async">
-            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/7d19ccab-d385-40df-9b0c-7b6953117677.png" alt="Estate Link Bracelet alternate view" width="1024" height="1024" loading="lazy" decoding="async">
           </div>
         </div>
 
@@ -490,10 +473,6 @@
         <div class="gallery">
           <div class="gallery-main">
             <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/26765446-766c-4156-a5b3-71fec9035711.png" alt="Heirloom Signet Ring hero view" width="1024" height="1024" loading="lazy" decoding="async">
-          </div>
-          <div class="thumbs">
-            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/26765446-766c-4156-a5b3-71fec9035711.png" alt="Heirloom Signet Ring front view" width="1024" height="1024" loading="lazy" decoding="async">
-            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/26765446-766c-4156-a5b3-71fec9035711.png" alt="Heirloom Signet Ring alternate view" width="1024" height="1024" loading="lazy" decoding="async">
           </div>
         </div>
 
