@@ -10,11 +10,11 @@
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/fecdbd73-3ee4-4f2a-b5bd-b07ce2964755.png" />
   <meta name="theme-color" content="#8b6a3d" />
-  <link rel="icon" type="image/png" href="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/fecdbd73-3ee4-4f2a-b5bd-b07ce2964755.png">
+  /png" href="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/fecdbd73-3ee4-4f2a-b5bd-b07ce2964755.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  //fonts.googleapis.com">
+  //fonts.gstatic.com" crossorigin>
+  //fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root,[data-theme="light"]{
@@ -79,8 +79,14 @@
     .hero-meta,.trust-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-4);margin-top:var(--space-8)}
     .stat,.trust-card{padding-top:var(--space-4);border-top:1px solid var(--color-divider)}
     .stat strong,.trust-card strong{display:block;font-size:var(--text-lg);font-family:var(--font-display)}
-    .hero-card{background:var(--color-surface);border-radius:var(--radius-xl);padding:var(--space-4);box-shadow:var(--shadow-md);border:1px solid var(--color-border)}
-    .hero-card img{border-radius:calc(var(--radius-xl) - var(--space-4));width:100%;aspect-ratio:4/5;object-fit:cover}
+    .hero-card{position:relative;isolation:isolate;background:linear-gradient(145deg,color-mix(in srgb,var(--color-surface) 78%,transparent),color-mix(in srgb,var(--color-surface-2) 92%,transparent));border-radius:calc(var(--radius-xl) + .5rem);padding:clamp(1rem,2vw,1.4rem);box-shadow:0 28px 80px rgba(20,12,7,.18);border:1px solid color-mix(in srgb,var(--color-border) 78%,transparent);overflow:hidden}
+    .hero-card::before{content:'';position:absolute;inset:-20% auto auto -10%;width:65%;height:70%;background:radial-gradient(circle,color-mix(in srgb,var(--color-primary) 24%,transparent) 0%,transparent 70%);opacity:.9;pointer-events:none}
+    .hero-card::after{content:'';position:absolute;inset:auto -8% -12% auto;width:220px;height:220px;border-radius:50%;border:1px solid color-mix(in srgb,var(--color-primary) 22%,transparent);opacity:.6;pointer-events:none}
+    .hero-frame{position:relative;display:grid;gap:var(--space-4)}
+    .hero-frame img{border-radius:calc(var(--radius-xl) - .2rem);width:100%;aspect-ratio:4/5;object-fit:cover;box-shadow:0 24px 48px rgba(20,12,7,.18)}
+    .hero-plaque{position:absolute;left:1rem;bottom:1rem;display:grid;gap:.25rem;padding:.85rem 1rem;border-radius:1rem;background:color-mix(in srgb,var(--color-surface) 84%,transparent);backdrop-filter:blur(10px);border:1px solid color-mix(in srgb,var(--color-border) 86%,transparent);max-width:72%}
+    .hero-plaque span{font-size:var(--text-xs);letter-spacing:.18em;text-transform:uppercase;color:var(--color-text-muted)}
+    .hero-plaque strong{font-family:var(--font-display);font-size:clamp(1.1rem,1rem + .6vw,1.55rem);font-weight:600;line-height:1}
     .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-5)}
     .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-6)}
     .card,.panel,.policy-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);box-shadow:var(--shadow-sm)}
@@ -192,8 +198,8 @@
       <div class="header-actions">
         <button class="cart-button" type="button" data-open-cart aria-label="Open cart">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <circle cx="9" cy="20" r="1"></circle>
-            <circle cx="18" cy="20" r="1"></circle>
+            ircle cx="9" cy="20" r="1"></circle>
+            ircle cx="18" cy="20" r="1"></circle>
             <path d="M3 4h2l2.4 10.2a1 1 0 0 0 1 .8h9.8a1 1 0 0 0 1-.8L21 7H7"></path>
           </svg>
           <span class="count" data-cart-count>0</span>
@@ -215,46 +221,52 @@
         <div>
           <p class="eyebrow">Fine jewelry boutique</p>
           <h1>New arrivals and one-of-a-kind pre-owned pieces.</h1>
-          <p>Inspired By Ian offers curated new jewelry, selected pre-owned pieces, and consignment services for clients looking to buy, sell, or discover something special.</p>
+          <p>Inspired By Ian presents refined fine jewelry, elevated pre-owned finds, and consignment pieces with sharper curation, stronger presentation, and a boutique experience that feels considered from the first scroll.</p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#new">Browse new arrivals</a>
-            <button class="btn btn-secondary" type="button" data-open-cart>View cart</button>
+            <a class="btn btn-primary" href="#new">Shop the collection</a>
+            <a class="btn btn-secondary" href="#preowned">Explore one-of-a-kind pieces</a>
           </div>
 
           <div class="hero-meta">
             <div class="stat">
-              <strong>Based on Vancouver Island</strong>
-              <span class="mini-note">Orders ship from Vancouver Island, Canada with direct customer support by email and phone.</span>
+              <strong>Quiet luxury, local roots</strong>
+              <span class="mini-note">Curated on Vancouver Island, Canada with direct support and considered presentation at every touchpoint.</span>
             </div>
             <div class="stat">
-              <strong>New + pre-owned</strong>
-              <span class="mini-note">Shop everyday staples, giftable pieces, and one-of-a-kind finds in one collection.</span>
+              <strong>Curated with discipline</strong>
+              <span class="mini-note">New staples sit beside standout pre-owned finds so the catalog feels selective, not crowded.</span>
             </div>
             <div class="stat">
-              <strong>Consignment supported</strong>
-              <span class="mini-note">Clients can submit select fine jewelry pieces for review and resale consideration.</span>
+              <strong>High-trust consignment</strong>
+              <span class="mini-note">Select fine jewelry is reviewed, presented, and sold with clear standards and direct communication.</span>
             </div>
           </div>
         </div>
 
         <div class="hero-card">
-          <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c1d11376-d0b7-479c-ab9e-49ae0331139a.png" alt="Featured jewelry image in boutique studio lighting" width="1024" height="1024" loading="eager" decoding="async">
+          <div class="hero-frame">
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/c1d11376-d0b7-479c-ab9e-49ae0331139a.png" alt="Featured jewelry image in boutique studio lighting" width="1024" height="1024" loading="eager" decoding="async">
+            <div class="hero-plaque">
+              <span>Signature selection</span>
+              <strong>Fine pieces with editorial presence.</strong>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="trust-strip">
         <div class="trust-card">
-          <strong>Ships from Canada</strong>
-          <span class="mini-note">Orders ship from Vancouver Island, Canada with careful packaging and direct support.</span>
+          <strong>Presentation matters</strong>
+          <span class="mini-note">Every piece is shown with stronger visual restraint, premium spacing, and a more editorial storefront feel.</span>
         </div>
         <div class="trust-card">
-          <strong>Demo cart active</strong>
-          <span class="mini-note">The cart on this site is a temporary demo and does not place real orders or process payment.</span>
+          <strong>Built to feel premium</strong>
+          <span class="mini-note">Typography, contrast, spacing, and image handling are tuned to feel more luxury boutique than generic template.</span>
         </div>
         <div class="trust-card">
-          <strong>Clear product details</strong>
-          <span class="mini-note">Each item below has its own detail section with materials, condition, and shipping notes.</span>
+          <strong>Clean decision-making</strong>
+          <span class="mini-note">Each product keeps strong imagery, material details, and concise specs without clutter or duplicate visual noise.</span>
         </div>
       </div>
     </section>
@@ -556,7 +568,7 @@
           </article>
           <article class="policy-card">
             <h3>Privacy policy</h3>
-            <p class="muted">Inspired By Ian collects contact and order information to process purchases, respond to inquiries, manage seller submissions, and provide customer service. Privacy questions may be sent to <a href="mailto:info@inspiredbyian.com">info@inspiredbyian.com</a>.</p>
+            <p class="muted">Inspired By Ian collects contact and order information to process purchases, respond to inquiries, manage seller submissions, and provide customer service. Privacy questions may be sent to <a href="mailto:dewarianross@gmail.com">dewarianross@gmail.com</a>.</p>
           </article>
         </div>
 
@@ -578,8 +590,8 @@
 
           <ul class="contact-list" style="margin-top:1.5rem;">
             <li><strong>Business name:</strong> Inspired By Ian</li>
-            <li><strong>Email:</strong> <a href="mailto:info@inspiredbyian.com">info@inspiredbyian.com</a></li>
-            <li><strong>Phone:</strong> <a href="tel:+1250-265-7465">250-265-7465</a></li>
+            <li><strong>Email:</strong> <a href="mailto:dewarianross@gmail.com">dewarianross@gmail.com</a></li>
+            <li><strong>Phone:</strong> <a href="tel:+18256097217">825-609-7217</a></li>
             <li><strong>Location:</strong> Vancouver Island, Canada</li>
             <li><strong>Support hours:</strong> 9:00 AM to 5:00 PM</li>
           </ul>
@@ -611,8 +623,8 @@
       <div>
         <h3 style="font-family:var(--font-display); font-size:var(--text-lg); margin-bottom:1rem;">Contact</h3>
         <ul class="footer-links">
-          <li><a href="mailto:info@inspiredbyian.com">info@inspiredbyian.com</a></li>
-          <li><a href="tel:+1250-265-7465">250-265-7465</a></li>
+          <li><a href="mailto:dewarianross@gmail.com">dewarianross@gmail.com</a></li>
+          <li><a href="tel:+18256097217">825-609-7217</a></li>
           <li>Vancouver Island, Canada</li>
         </ul>
       </div>
